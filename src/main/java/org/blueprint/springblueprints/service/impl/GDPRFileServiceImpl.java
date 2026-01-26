@@ -1,6 +1,7 @@
 package org.blueprint.springblueprints.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.blueprint.springblueprints.annotations.GDPRCompliantCdn;
 import org.blueprint.springblueprints.service.CdnService;
 import org.blueprint.springblueprints.service.GDPRFileService;
@@ -23,7 +24,7 @@ class GDPRFileServiceImpl implements GDPRFileService {
      */
     @Override
     public void check(File file) {
-        final var checkedFile = cdnService.download(file.getName());
+        val checkedFile = cdnService.download(file.getName());
         log.info("Checking file {}", checkedFile.getAbsolutePath());
     }
 }

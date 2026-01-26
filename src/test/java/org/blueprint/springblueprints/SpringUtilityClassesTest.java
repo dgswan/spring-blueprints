@@ -1,6 +1,7 @@
 package org.blueprint.springblueprints;
 
 import lombok.SneakyThrows;
+import lombok.val;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -17,7 +18,7 @@ class SpringUtilityClassesTest {
     @Test
     @SneakyThrows
     void copyToString() {
-        try (final var is = request.getInputStream()) {
+        try (val is = request.getInputStream()) {
             assertThat(StreamUtils.copyToString(is, StandardCharsets.UTF_8))
                     .isNotBlank()
                     .isEqualToIgnoringWhitespace("""
@@ -32,7 +33,7 @@ class SpringUtilityClassesTest {
     @Test
     @SneakyThrows
     void copyToByteArray() {
-        try (final var is = request.getInputStream()) {
+        try (val is = request.getInputStream()) {
             assertThat(StreamUtils.copyToByteArray(is)).asString()
                     .isEqualToIgnoringWhitespace("""
                             {
