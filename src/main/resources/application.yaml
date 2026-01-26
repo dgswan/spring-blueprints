@@ -4,3 +4,13 @@ blueprint-config:
     - GDPR-verification
     - preview-mode
   primary-cdn-provider: azure
+  cdn-providers:
+    azure:
+      enabled: true
+    tencent:
+      enabled: true
+    cloud-front:
+      enabled: false
+logging:
+  level:
+    org.blueprint.springblueprints.annotations.OnCdnProviderEnabledCondition: TRACE
