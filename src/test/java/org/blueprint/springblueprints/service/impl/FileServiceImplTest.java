@@ -18,20 +18,31 @@ import static org.mockito.Mockito.when;
 @SpringBootTest(classes = FileServiceImpl.class)
 class FileServiceImplTest {
 
-    @MockitoBean
+    @MockitoBean(name = "azureCdnServiceImpl")
     private CdnService azureCdnService;
 
+    @MockitoBean(name = "tencentCdnServiceImpl")
+    private CdnService tencentCdnService;
+
+    @MockitoBean(name = "cloudFrontCdnServiceImpl")
+    private CdnService cloudFrontCdnService;
+
     @Autowired
-    private FileService fileService;
+    private FileService underTest;
 
     @Test
     @SneakyThrows
     void testFileUpload() {
-        when(azureCdnService.upload(any(File.class))).thenReturn(URI.create("https://cdn.example.com/test.txt"));
-        assertThat(fileService.upload(File.createTempFile("test", ".txt")))
-                .hasSize(1)
-                .first()
-                .isEqualTo(URI.create("https://cdn.example.com/test.txt"));
+        when(azureCdnService.upload(any(File.class))).thenReturn(URI.create("https://example.azure.com/test.txt"));
+        when(tencentCdnService.upload(any(File.class))).thenReturn(URI.create("https://example.tencent.com/test.txt"));
+        when(cloudFrontCdnService.upload(any(File.class))).thenReturn(URI.create("https://example.cloud-front.com/test.txt"));
+        assertThat(underTest.upload(File.createTempFile("test", ".txt")))
+                .hasSize(3)
+                .containsExactlyInAnyOrder(
+                        URI.create("https://example.azure.com/test.txt"),
+                        URI.create("https://example.tencent.com/test.txt"),
+                        URI.create("https://example.cloud-front.com/test.txt")
+                );
     }
 
 }
