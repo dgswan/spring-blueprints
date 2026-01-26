@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class SpringUtilityClassesTest {
 
-    private Resource request = new ClassPathResource("http-request-payload.json");
+    private final Resource request = new ClassPathResource("http-request-payload.json");
 
     @Test
     @SneakyThrows
