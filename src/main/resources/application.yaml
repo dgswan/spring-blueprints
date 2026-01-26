@@ -1,0 +1,6 @@
+spring.application.name: spring-blueprints
+blueprint-config:
+  features:
+    - GDPR-verification
+    - preview-mode
+  primary-cdn-provider: azure
