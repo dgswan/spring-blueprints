@@ -1,0 +1,25 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "Gilfoyle",
+      "position": "Software Engineer",
+      "department": "Development",
+      "salary": 90000
+    },
+    {
+      "id": 2,
+      "name": "Richard Hendricks",
+      "position": "CTO",
+      "department": "Development",
+      "salary": 105000
+    },
+    {
+      "id": 3,
+      "name": "Big Head",
+      "position": "N/A",
+      "department": "Rooftop",
+      "salary": 2000000
+    }
+  ]
+}
