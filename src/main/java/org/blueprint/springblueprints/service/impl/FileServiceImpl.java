@@ -1,6 +1,7 @@
 package org.blueprint.springblueprints.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.blueprint.springblueprints.config.ApplicationConfiguration;
 import org.blueprint.springblueprints.service.CdnService;
 import org.blueprint.springblueprints.service.FileService;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ import java.util.stream.Collectors;
 class FileServiceImpl implements FileService {
 
     private final Collection<CdnService> cdnServices;
+
+    private final ApplicationConfiguration applicationConfiguration;
 
     /**
      * {@inheritDoc}

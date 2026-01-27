@@ -1,10 +1,12 @@
 package org.blueprint.springblueprints.service.impl;
 
 import lombok.SneakyThrows;
+import org.blueprint.springblueprints.config.ApplicationConfiguration;
 import org.blueprint.springblueprints.service.CdnService;
 import org.blueprint.springblueprints.service.FileService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
@@ -16,6 +18,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest(classes = FileServiceImpl.class)
+@EnableConfigurationProperties(ApplicationConfiguration.class)
 class FileServiceImplTest {
 
     @MockitoBean(name = "azureCdnServiceImpl")
